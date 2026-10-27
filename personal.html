@@ -67,13 +67,13 @@ tbody tr:hover{background:#f8faff}
 td.name{font-weight:700}
 td.name small{display:block;font-weight:400;font-size:11px;color:var(--ink-soft)}
 td.num{font-family:var(--mono);font-weight:600;white-space:nowrap}
-td.ratio{font-family:var(--mono);font-weight:700}
+td.ratio{font-family:var(--mono);font-weight:700;text-align:right}
 td.ratio small{display:block;font-weight:400;font-size:11px;color:var(--ink-soft);font-family:"Microsoft YaHei",sans-serif}
 .mark-ok{color:var(--ok)} .mark-red{color:var(--red)} .mark-gold{color:var(--gold)}
 td .bar{display:block;height:7px;width:100%;min-width:0;border-radius:3px;background:#eceef5;position:relative;overflow:hidden;margin-top:4px}
 td .bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#3b6fd9,#5d8ae8)}
 td .bar i.over{background:linear-gradient(90deg,var(--gold),#e0b05a)}
-td.delta{font-family:var(--mono);font-weight:700;white-space:nowrap}
+td.delta{font-family:var(--mono);font-weight:700;white-space:nowrap;text-align:right}
 td.delta small{display:block;font-weight:400;font-size:10.5px;color:var(--ink-soft);font-family:"Microsoft YaHei",sans-serif}
 .empty{padding:40px;text-align:center;color:var(--ink-soft);font-size:13px}
 .legend{font-size:11.5px;color:var(--ink-soft);display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
@@ -145,7 +145,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
     <div class="legend">战新 = 彩铃或通信（是否战新=是） · 占比≥25%达标（绿）、低于25%红色 · 点击表头可切换排序</div>
   </div>
 </div>
-<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-27 18:59 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
+<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-27 23:20 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
 <script>function sView(v){var a=(v==="main"),b=(v==="spc");document.getElementById("tabMain").className="tab"+(a?" on":"");document.getElementById("tabSpc").className="tab"+(b?" on":"");document.getElementById("mainView").style.display=a?"block":"none";document.getElementById("spcView").style.display=b?"block":"none";}function initShareSearch(){var inp=document.getElementById("searchInput"),clr=document.getElementById("searchClear");if(!inp)return;function applyTbl(host,cols,q){var tb=host?host.querySelector("tbody"):null;if(!tb)return true;var rows=Array.prototype.slice.call(tb.querySelectorAll("tr")),any=false;rows.forEach(function(tr){if(tr.classList&&tr.classList.contains("no-hit-tmp"))return;var nm=tr.getAttribute("data-name")||"";var ok=!q||nm.indexOf(q)>=0;tr.style.display=ok?"":"none";if(ok)any=true;});var nh=tb.querySelector("tr.no-hit-tmp");if(nh)tb.removeChild(nh);if(q&&!any){nh=document.createElement("tr");nh.className="no-hit-tmp";var td=document.createElement("td");td.className="no-hit";td.setAttribute("colspan",String(cols));td.textContent="未找到匹配「"+q+"」的人员";nh.appendChild(td);tb.appendChild(nh);}return !q||any;}function apply(){var q=(inp.value||"").trim();clr.style.display=q?"block":"none";applyTbl(document.getElementById("tableHost"),6,q);applyTbl(document.getElementById("spcHost"),4,q);}inp.addEventListener("input",apply);clr.addEventListener("click",function(){inp.value="";apply();});apply();}sView("main");initShareSearch();</script>
 </body>
 </html>
