@@ -53,6 +53,8 @@ body{
 .stat .val.red{color:var(--red)} .stat .val.ok{color:var(--ok)} .stat .val.gold{color:var(--gold)} .stat .val.blue{color:var(--blue)}
 /* 表格 */
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(20,33,61,.05)}
+#tableHost,#spcHost{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){#cardSub::after,#spcSub::after{content:" · 左右滑动查看";color:var(--blue)}#tableHost td.name,#tableHost th:first-child{position:sticky;left:0;z-index:2;background:#fff}#tableHost th:first-child{background:#eef1f8;z-index:3}}
 .card-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px;padding:13px 18px;background:linear-gradient(90deg,rgba(20,33,61,.06),rgba(20,33,61,.01));border-bottom:1px solid var(--line)}
 .card-head .t{font-size:15px;font-weight:700}
 .card-head .sub{font-size:12px;color:var(--ink-soft)}
@@ -119,7 +121,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
     </div>
   </div>
 
-  <div id="mainView" style="display: block;">
+  <div id="mainView">
     <div class="summary" id="summary" style="display: grid;"><div class="stat"><div class="lab">总完成单数</div><div class="val red">800<small>单</small></div><div class="lab" style="margin-top:3px">环比 -6.5%</div></div><div class="stat"><div class="lab">129+ 占比</div><div class="val ">31.4%<small>(251单)</small></div></div><div class="stat"><div class="lab">实收积分合计</div><div class="val red">77,140<small>分</small></div><div class="lab" style="margin-top:3px">环比 -2.6%</div></div><div class="stat"><div class="lab">覆盖人数</div><div class="val blue">43<small>人</small></div><div class="lab" style="margin-top:3px">活跃 43 人</div></div><div class="stat"><div class="lab">对标日期</div><div class="val ">当月 25 日<small></small></div><div class="lab" style="margin-top:3px">上月同期同口径</div></div></div>
 
     <div class="card">
@@ -133,7 +135,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
     <div class="legend"><span><span class="dot g"></span>环比上升</span><span><span class="dot r"></span>环比下降</span><span><span class="dot o"></span>129+占比达标（按门店目标表，无目标者按组别）</span></div>
   </div>
 
-  <div id="spcView" style="display: none;">
+  <div id="spcView" style="display:none">
     <div class="summary" id="spcSummary"><div class="stat"><div class="lab">战新占比</div><div class="val gold">27.0%<small>(396单)</small></div><div class="lab" style="margin-top:3px">达标线 25%</div></div><div class="stat"><div class="lab">战新单数</div><div class="val blue">396<small>单</small></div></div><div class="stat"><div class="lab">总记录数</div><div class="val ">1,468<small>条</small></div></div><div class="stat"><div class="lab">覆盖人数</div><div class="val ">48<small>人</small></div></div></div>
     <div class="card">
       <div class="card-head">
@@ -145,7 +147,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
     <div class="legend">战新 = 彩铃或通信（是否战新=是） · 占比≥25%达标（绿）、低于25%红色 · 点击表头可切换排序</div>
   </div>
 </div>
-<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-27 23:20 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
+<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-28 00:07 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
 <script>function sView(v){var a=(v==="main"),b=(v==="spc");document.getElementById("tabMain").className="tab"+(a?" on":"");document.getElementById("tabSpc").className="tab"+(b?" on":"");document.getElementById("mainView").style.display=a?"block":"none";document.getElementById("spcView").style.display=b?"block":"none";}function initShareSearch(){var inp=document.getElementById("searchInput"),clr=document.getElementById("searchClear");if(!inp)return;function applyTbl(host,cols,q){var tb=host?host.querySelector("tbody"):null;if(!tb)return true;var rows=Array.prototype.slice.call(tb.querySelectorAll("tr")),any=false;rows.forEach(function(tr){if(tr.classList&&tr.classList.contains("no-hit-tmp"))return;var nm=tr.getAttribute("data-name")||"";var ok=!q||nm.indexOf(q)>=0;tr.style.display=ok?"":"none";if(ok)any=true;});var nh=tb.querySelector("tr.no-hit-tmp");if(nh)tb.removeChild(nh);if(q&&!any){nh=document.createElement("tr");nh.className="no-hit-tmp";var td=document.createElement("td");td.className="no-hit";td.setAttribute("colspan",String(cols));td.textContent="未找到匹配「"+q+"」的人员";nh.appendChild(td);tb.appendChild(nh);}return !q||any;}function apply(){var q=(inp.value||"").trim();clr.style.display=q?"block":"none";applyTbl(document.getElementById("tableHost"),6,q);applyTbl(document.getElementById("spcHost"),4,q);}inp.addEventListener("input",apply);clr.addEventListener("click",function(){inp.value="";apply();});apply();}sView("main");initShareSearch();</script>
 </body>
 </html>
