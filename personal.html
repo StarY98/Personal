@@ -85,11 +85,18 @@ td.delta small{display:block;font-weight:400;font-size:10.5px;color:var(--ink-so
 .btn-share:hover:not(:disabled){background:#1e4bb8}
 .btn-share:disabled{background:#b9c2d6;cursor:not-allowed}
 .sharehint{font-size:11.5px;color:var(--ink-soft)}
-/* 视图切换选项卡 */
-.tabs{display:flex;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+/* 视图切换选项卡 + 姓名搜索 */
+.tabbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
 .tab{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:10px 10px 0 0;padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;border-bottom:3px solid transparent}
 .tab:hover{border-color:var(--blue);color:var(--blue)}
 .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.searchbox{position:relative;flex:none}
+.searchbox input{font-family:inherit;font-size:13px;padding:7px 30px 7px 12px;border:1px solid var(--line);border-radius:8px;width:210px;background:#fff;color:var(--ink);outline:none;transition:border-color .15s;box-shadow:0 1px 4px rgba(20,33,61,.04)}
+.searchbox input:focus{border-color:var(--blue)}
+.searchbox .s-clear{position:absolute;right:5px;top:50%;transform:translateY(-50%);border:none;background:none;color:var(--ink-soft);font-size:13px;cursor:pointer;padding:3px 6px;line-height:1;display:none}
+.searchbox .s-clear:hover{color:var(--red)}
+td.no-hit{text-align:center;color:var(--ink-soft);padding:28px 12px;font-size:13px}
 
 thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
 </head>
@@ -101,9 +108,12 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
 <div class="wrap">
   
 
-  <div class="tabs">
-    <button class="tab on" id="tabMain" onclick="sView('main')">合约及积分</button>
-    <button class="tab" id="tabSpc" onclick="sView('spc')">专项数据</button>
+  <div class="tabbar">
+    <div class="tabs">
+      <button class="tab on" id="tabMain" onclick="sView('main')">合约及积分</button>
+      <button class="tab" id="tabSpc" onclick="sView('spc')">专项数据</button>
+    </div>
+    
   </div>
 
   <div id="mainView" style="display: block;">
@@ -132,7 +142,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}</style>
     <div class="legend">战新 = 彩铃或通信（是否战新=是） · 占比≥25%达标（绿）、低于25%红色 · 点击表头可切换排序</div>
   </div>
 </div>
-<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-27 15:44 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
+<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-27 16:55 · 数据截止 当月 25 日 · 由「个人业务看板」导出</div></div>
 <script>function sView(v){var a=(v==="main"),b=(v==="spc");document.getElementById("tabMain").className="tab"+(a?" on":"");document.getElementById("tabSpc").className="tab"+(b?" on":"");document.getElementById("mainView").style.display=a?"block":"none";document.getElementById("spcView").style.display=b?"block":"none";}sView("main");</script>
 </body>
 </html>
