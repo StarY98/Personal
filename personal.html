@@ -166,7 +166,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}.pwa-install{displa
       <button class="tab" id="tabSpc" onclick="sView('spc')">专项数据</button>
       <button class="tab" id="tabComm" onclick="sView('comm')">提成</button>
     </div>
-    <div class="searchbox">
+    <div class="searchbox" style="">
       <input type="text" id="searchInput" placeholder="🔍 输入姓名查找…" autocomplete="off">
       <button type="button" class="s-clear" id="searchClear" title="清除">✕</button>
     </div>
@@ -198,7 +198,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}.pwa-install{displa
     <div class="legend">战新 = 彩铃或通信（是否战新=是） · 占比≥25%达标（绿）、低于25%红色 · 点击表头可切换排序</div>
   </div>
 
-  <div id="commView" style="display:none">
+  <div id="commView" style="display: none;">
     <div class="card">
       <div class="card-head">
         <span class="t">个人提成</span>
@@ -210,7 +210,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}.pwa-install{displa
         <button type="button" class="btn-comm" id="commUnlock">查看提成</button>
         <div class="comm-err" id="commError"></div>
       </div>
-      <div class="comm-result" id="commResult" style="display:none"></div>
+      <div class="comm-result" id="commResult" style="display: none;"></div>
       <div class="comm-note">提成为个人各项提成合计。积分提成：R0目标以内 ×1.6、超出目标部分 ×2（参考 R0 值）；战新每户 6 分 × 1.6（需导入专项数据表）；附加奖惩按当月上传的规则计算。</div>
       <div id="commRuleBox" class="comm-rules"><details class="comm-rule-details"><summary>本月附加奖惩规则（2026年10月）</summary><pre>1、2026年10月每一户全额预存+50元
 2、199以上套餐每一户+10元
@@ -218,7 +218,7 @@ thead th{cursor:default}thead th:hover{color:var(--ink-soft)}.pwa-install{displa
     </div>
   </div>
 </div>
-<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-29 00:37 · 数据截止 当月 26 日 · 由「个人业务看板」导出</div></div>
+<div class="wrap" style="padding-top:0"><div class="legend" style="margin-top:0;padding:8px 0 0;color:#9aa3b8">只读快照 · 生成于 2026-10-29 00:41 · 数据截止 当月 26 日 · 由「个人业务看板」导出</div></div>
 <script>function sView(v){var a=(v==="main"),b=(v==="spc");document.getElementById("tabMain").className="tab"+(a?" on":"");document.getElementById("tabSpc").className="tab"+(b?" on":"");document.getElementById("mainView").style.display=a?"block":"none";document.getElementById("spcView").style.display=b?"block":"none";}function initShareSearch(){var inp=document.getElementById("searchInput"),clr=document.getElementById("searchClear");if(!inp)return;function applyTbl(host,cols,q){var tb=host?host.querySelector("tbody"):null;if(!tb)return true;var rows=Array.prototype.slice.call(tb.querySelectorAll("tr")),any=false;rows.forEach(function(tr){if(tr.classList&&tr.classList.contains("no-hit-tmp"))return;var nm=tr.getAttribute("data-name")||"";var ok=!q||nm.indexOf(q)>=0;tr.style.display=ok?"":"none";if(ok)any=true;});var nh=tb.querySelector("tr.no-hit-tmp");if(nh)tb.removeChild(nh);if(q&&!any){nh=document.createElement("tr");nh.className="no-hit-tmp";var td=document.createElement("td");td.className="no-hit";td.setAttribute("colspan",String(cols));td.textContent="未找到匹配「"+q+"」的人员";nh.appendChild(td);tb.appendChild(nh);}return !q||any;}function apply(){var q=(inp.value||"").trim();clr.style.display=q?"block":"none";applyTbl(document.getElementById("tableHost"),7,q);applyTbl(document.getElementById("spcHost"),4,q);}inp.addEventListener("input",apply);clr.addEventListener("click",function(){inp.value="";apply();});apply();}sView("main");initShareSearch();</script>
 <script>function sha256Hex(ascii) {
   function rr(v, a) { return (v >>> a) | (v << (32 - a)); }
